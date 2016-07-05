@@ -1,0 +1,11 @@
+Proposito del programa: Resolver Sudokus parcialmente rellenados.
+
+El programa estara escrito en Java.
+
+Inicialmente el programa sera de terminal. Eventualmente se le anadira UI.
+
+El tablero parcialmente rellenado se pasara como input en un fichero de texto donde cada fila sera una linea 
+del fichero y los valores de las casillas estaran separados por comas. Las casillas que no esten rellenadas
+apareceran como un espacio en blanco.
+
+El output sera otro fichero con el mismo formato.
