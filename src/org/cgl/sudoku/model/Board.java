@@ -86,8 +86,25 @@ public class Board {
 			}
 		}
 		
+		// para comprobar que las posiciones son las correctas
 		for (int i = 0; i < 81; i++){
 			System.out.println("The positions of cell " + i + " are row " + cells[i].getRow() + ", column " + cells[i].getColumn() + ", box " + cells[i].getBox());
+		}
+		
+		for (int i = 0; i < 81; i++){		
+			cells[i].setValue(initialState[i]);
+		}
+		
+		// para comprobar que los valores se han asignado correctamente
+		for (int i = 0; i < 81; i++) {
+			
+			if (i%9 != 8) {
+				System.out.print(cells[i].getValue() + ",");
+			} else {
+				System.out.print(cells[i].getValue());
+				System.out.println();
+			}
+			
 		}
 
 	}
