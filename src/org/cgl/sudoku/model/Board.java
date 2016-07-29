@@ -133,6 +133,10 @@ public class Board {
 	public void setCells(Cell[] cells) {
 		this.cells = cells;
 	}
+	
+	public Cell getCell(int id) {
+		return cells[id];
+	}
 
 
 
