@@ -7,21 +7,11 @@ public class Board {
 		
 	public Board(Integer[] initialState) {
 		
-		cells = new Cell[9*9];
-		subsets = new Subset[9*3];
-		
-		for (int i = 0; i < 9; i++) {
-			subsets[i] = new Row(9, ("Row" + i));
-			System.out.println("Row " + (i+1) + " created");
-			subsets[i+9] = new Column(9, ("Column" + i));
-			System.out.println("Column " + (i+1) + " created");
-			subsets[i+9*2] = new Box(9, ("Box" + i));
-			System.out.println("Box " + (i+1) + " created");
-		}
+		cells = new Cell[81];
 		
 		for (int i = 0; i < 81; i++) {
-			cells[i] = new Cell(i);
-			cells[i].setValue(i);
+			cells[i] = new Cell(""+i);
+//			cells[i].setValue(i);
 //			subsets[i/9].cells[i%9] = cells[i];
 //			subsets[(i/9)+9].cells[i%9] = cells[i];
 //			subsets[(i/9)+(9*2)].cells[i%9] = cells[i];
@@ -29,14 +19,25 @@ public class Board {
 //			System.out.println("The positions of cell " + i + " are row " + (i/9) + ", column " + ((i/9)+9) + ", box " + ((i/9)+(9*2)));
 		}
 		
-		for (int i = 0; i < 9; i++) {
-			
-			for (int j = 0; j < 9; j++) {
+		subsets = new Subset[27];
 				
-				subsets[i].cells[j] = cells[((i*9)+j)];
-				cells[((i*9)+j)].setRow(subsets[i]);
-			}
-		}
+		for (int i = 0; i < 9; i++) {
+			subsets[i] = new Row(9, i, this);
+			System.out.println("Row " + (i+1) + " created");
+			subsets[i+9] = new Column(9, ("Column" + i));
+			System.out.println("Column " + (i+1) + " created");
+			subsets[i+9*2] = new Box(9, ("Box" + i));
+			System.out.println("Box " + (i+1) + " created");
+		}		
+		
+//		for (int i = 0; i < 9; i++) {
+//			
+//			for (int j = 0; j < 9; j++) {
+//				
+//				subsets[i].cells[j] = cells[((i*9)+j)];
+//				cells[((i*9)+j)].setRow(subsets[i]);
+//			}
+//		}
 		
 		for (int i = 0; i < 9; i++) {
 			
@@ -108,7 +109,41 @@ public class Board {
 		}
 
 	}
+	
+	
 
-	public void Solve(){
+	public Subset[] getSubsets() {
+		return subsets;
+	}
+
+
+
+	public void setSubsets(Subset[] subsets) {
+		this.subsets = subsets;
+	}
+
+
+
+	public Cell[] getCells() {
+		return cells;
+	}
+
+
+
+	public void setCells(Cell[] cells) {
+		this.cells = cells;
+	}
+
+
+
+	public Integer[] solve() {
+		
+		Boolean done = true;
+		
+		do {
+			
+		} while (done = false);
+		
+		return null;
 	}
 }

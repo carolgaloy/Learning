@@ -11,6 +11,13 @@ public class Subset {
 		this.id = id;
 		
 	}
+	
+	//cambio de constructor
+	public Subset(Integer size) {
+		
+		cells = new Cell[size];
+		
+	}
 
 	public String getId() {
 		return id;

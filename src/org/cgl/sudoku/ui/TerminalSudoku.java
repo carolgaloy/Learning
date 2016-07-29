@@ -1,8 +1,6 @@
 package org.cgl.sudoku.ui;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import org.cgl.sudoku.model.*;
@@ -19,10 +17,21 @@ public class TerminalSudoku {
 		TerminalSudoku terminalSudoku = new TerminalSudoku();
 		
 		Integer[] initialState = terminalSudoku.readInitialState();
+		
+		for (int i = 0; i < 81; i++) {
+			
+			if (i%9 != 8) {
+				System.out.print(initialState[i] + ",");
+			} else {
+				System.out.print(initialState[i]);
+				System.out.println();
+			}
+			
+		}
 
-		Board board = new Board(initialState);
+		Board board = new Board(initialState);	
 		
-		
+		board.solve();
 		
 		// TODO: Pasar los datos al programa que lo resuelve
 		
@@ -31,32 +40,49 @@ public class TerminalSudoku {
 		System.out.println("done");
 
 	}
-
+	
+	// Falta la validación de los valores
 	private Integer[] readInitialState() {
 		
 		Integer[] values = new Integer[81];
+		Integer position = 0;
 		Scanner in = new Scanner(System.in);
-		Integer count = 0;
 
-		while(in.hasNextLine()) {
+		try {
 			
-			String strLine = in.nextLine();
-			String[] strSplit = strLine.split(",");
-			
-			if (strLine.isEmpty()) {
-				break;
+			while (in.hasNextLine()) {
+				
+				String strLine = in.nextLine();
+				
+				if (strLine.isEmpty()) {
+					break;
+				}
+				
+				String[] strSplit = strLine.split(",");
+				System.out.println(strSplit.length);
+				
+				for (int i = 0; i < 9; i++) {					
+					String currentString = strSplit[i];
+					
+					if (!currentString.equals(" ")) {
+						try {
+							values[position] = Integer.parseInt(currentString);
+						} catch (NumberFormatException e) {
+							// TODO Log de las variables (strLine, i, position, etc.)
+							e.printStackTrace();
+						}
+					}
+					position++;
+				}
+				
+				System.out.println(strLine);				
 			}
 			
-			for (int i = 0; i < 9; i++) {				
-				if (!strSplit[i].equals(" ")){
-					values[i + count] = Integer.parseInt(strSplit[i]);
-				}								
-			}
+		} finally {
 			
-			System.out.println(strLine);
-			count = count + 9;
-			
+			in.close();
 		}
+			
 		return values;
 	}
 	
