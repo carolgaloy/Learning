@@ -2,15 +2,19 @@ package org.cgl.sudoku.ui;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import org.cgl.sudoku.model.*;
 
 public class TerminalSudoku {
 	
+	private final static Logger logger = Logger.getLogger(TerminalSudoku.class.getName());
+	
 	public static void main(String[] args) throws IOException{
 		
 		System.out.println("start");
-		
+		logger.info("This is an INFO message");
+		logger.severe(() -> "This is a SEVERE message");
 		// TODO: Leer los datos de inizialización de un sudoku completo. Leer del stdin. Leer líneas del stdin.
 		// Crear un archivo sudoku1.txt, buscar un sudoku fácil y copiarlo. 
 		

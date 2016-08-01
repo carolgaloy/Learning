@@ -10,7 +10,7 @@ public class Row extends Subset {
 		for (int i = 0; i < size; i++) {
 			
 			cells[i] = board.getCell(((id*9)+i));
-			board.getCell(((id*9)+i)).setRow(this);
+			cells[i].setRow(this);
 		}
 		
 	}
