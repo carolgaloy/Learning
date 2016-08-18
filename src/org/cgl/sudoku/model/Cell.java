@@ -47,4 +47,47 @@ public class Cell {
 		return containers[2].getId();
 	}
 		
+	public String toString(){
+		return "The positions of cell " + id + " are " + getRow() + ", " + getColumn() + " and " + getBox();		
+	}
+
+	public Boolean valueMustBe(int value) {
+		
+		Boolean valueMustBe;
+		
+		for (Subset s : containers) {
+			
+			valueMustBe = s.valueMustBe(value, this);
+			
+			if (valueMustBe) {
+				return true;
+			}
+			
+		}
+		
+		return false;
+	}
+
+	public Boolean valueCanBe(int value, Subset subset) {
+		
+		Boolean valueCanBe;
+		
+		for (Subset s : containers) {
+			
+			if (s != subset) {
+				
+				valueCanBe = s.valueCanBe(value, this);
+				
+				if (!valueCanBe) {
+					return false;
+				}
+			}			
+		}
+		
+		return true;
+	}
+
+	public String getId() {
+		return id;
+	}
 }

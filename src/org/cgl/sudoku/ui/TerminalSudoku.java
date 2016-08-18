@@ -13,8 +13,8 @@ public class TerminalSudoku {
 	public static void main(String[] args) throws IOException{
 		
 		System.out.println("start");
-		logger.info("This is an INFO message");
-		logger.severe(() -> "This is a SEVERE message");
+		// logger.info("This is an INFO message");
+		// logger.severe(() -> "This is a SEVERE message");
 		// TODO: Leer los datos de inizialización de un sudoku completo. Leer del stdin. Leer líneas del stdin.
 		// Crear un archivo sudoku1.txt, buscar un sudoku fácil y copiarlo. 
 		
@@ -25,10 +25,10 @@ public class TerminalSudoku {
 		for (int i = 0; i < 81; i++) {
 			
 			if (i%9 != 8) {
-				System.out.print(initialState[i] + ",");
+				logger.finest(initialState[i] + ",");
 			} else {
-				System.out.print(initialState[i]);
-				System.out.println();
+				logger.finest(initialState[i] + "");
+				logger.finest("");
 			}
 			
 		}
@@ -41,8 +41,20 @@ public class TerminalSudoku {
 		
 		// TODO: Recibir la solución y escribirla. Escribir en el stdout
 		
+		System.out.println("The solution is:");
+		
+		for (int i = 0; i < 81; i++) {
+			
+			if (i%9 != 8) {
+				System.out.print(board.getCell(i).getValue()+ ",");
+			} else {
+				System.out.print(board.getCell(i).getValue() + "");
+				System.out.println();
+			}
+			
+		}
+		
 		System.out.println("done");
-
 	}
 	
 	// Falta la validación de los valores
@@ -51,6 +63,8 @@ public class TerminalSudoku {
 		Integer[] values = new Integer[81];
 		Integer position = 0;
 		Scanner in = new Scanner(System.in);
+		
+		System.out.println("The file contains:");
 
 		try {
 			
@@ -63,7 +77,6 @@ public class TerminalSudoku {
 				}
 				
 				String[] strSplit = strLine.split(",");
-				System.out.println(strSplit.length);
 				
 				for (int i = 0; i < 9; i++) {					
 					String currentString = strSplit[i];
@@ -81,6 +94,8 @@ public class TerminalSudoku {
 				
 				System.out.println(strLine);				
 			}
+			
+			System.out.println();
 			
 		} finally {
 			

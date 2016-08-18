@@ -15,9 +15,9 @@ public class Box extends Subset {
 			
 			for (int j = 0; j < 3; j++) {
 				
-				cells[i] = board.getCell((i*9)+j+baseNum);
-				cells[i].setBox(this);
-				
+				cells[(i*3)+j] = board.getCell((i*9)+j+baseNum);
+				cells[(i*3)+j].setBox(this);
+
 			}			
 		}		
 	}	
