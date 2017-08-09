@@ -1,0 +1,146 @@
+start
+9
+5, , , , , , , , 
+9
+ , , ,6, ,2, ,9,8
+9
+ , , , ,8,9, , ,4
+9
+6,1, , , , ,8, ,7
+9
+ , ,4, , , ,5, , 
+9
+9, ,8, ,7, , ,4,3
+9
+8, , ,4,3, , , , 
+9
+2,3, ,9, ,8, , , 
+9
+ , , , , , , ,8, 
+5,null,null,null,null,null,null,null,null
+null,null,null,6,null,2,null,9,8
+null,null,null,null,8,9,null,null,4
+6,1,null,null,null,null,8,null,7
+null,null,4,null,null,null,5,null,null
+9,null,8,null,7,null,null,4,3
+8,null,null,4,3,null,null,null,null
+2,3,null,9,null,8,null,null,null
+null,null,null,null,null,null,null,8,null
+Row 1 created
+Column 1 created
+Box 1 created
+Row 2 created
+Column 2 created
+Box 2 created
+Row 3 created
+Column 3 created
+Box 3 created
+Row 4 created
+Column 4 created
+Box 4 created
+Row 5 created
+Column 5 created
+Box 5 created
+Row 6 created
+Column 6 created
+Box 6 created
+Row 7 created
+Column 7 created
+Box 7 created
+Row 8 created
+Column 8 created
+Box 8 created
+Row 9 created
+Column 9 created
+Box 9 created
+The positions of cell 0 are Row 0, Column 0 and Box 0
+The positions of cell 1 are Row 0, Column 1 and Box 0
+The positions of cell 2 are Row 0, Column 2 and Box 0
+The positions of cell 3 are Row 0, Column 3 and Box 1
+The positions of cell 4 are Row 0, Column 4 and Box 1
+The positions of cell 5 are Row 0, Column 5 and Box 1
+The positions of cell 6 are Row 0, Column 6 and Box 2
+The positions of cell 7 are Row 0, Column 7 and Box 2
+The positions of cell 8 are Row 0, Column 8 and Box 2
+The positions of cell 9 are Row 1, Column 0 and Box 0
+The positions of cell 10 are Row 1, Column 1 and Box 0
+The positions of cell 11 are Row 1, Column 2 and Box 0
+The positions of cell 12 are Row 1, Column 3 and Box 1
+The positions of cell 13 are Row 1, Column 4 and Box 1
+The positions of cell 14 are Row 1, Column 5 and Box 1
+The positions of cell 15 are Row 1, Column 6 and Box 2
+The positions of cell 16 are Row 1, Column 7 and Box 2
+The positions of cell 17 are Row 1, Column 8 and Box 2
+The positions of cell 18 are Row 2, Column 0 and Box 0
+The positions of cell 19 are Row 2, Column 1 and Box 0
+The positions of cell 20 are Row 2, Column 2 and Box 0
+The positions of cell 21 are Row 2, Column 3 and Box 1
+The positions of cell 22 are Row 2, Column 4 and Box 1
+The positions of cell 23 are Row 2, Column 5 and Box 1
+The positions of cell 24 are Row 2, Column 6 and Box 2
+The positions of cell 25 are Row 2, Column 7 and Box 2
+The positions of cell 26 are Row 2, Column 8 and Box 2
+The positions of cell 27 are Row 3, Column 0 and Box 3
+The positions of cell 28 are Row 3, Column 1 and Box 3
+The positions of cell 29 are Row 3, Column 2 and Box 3
+The positions of cell 30 are Row 3, Column 3 and Box 4
+The positions of cell 31 are Row 3, Column 4 and Box 4
+The positions of cell 32 are Row 3, Column 5 and Box 4
+The positions of cell 33 are Row 3, Column 6 and Box 5
+The positions of cell 34 are Row 3, Column 7 and Box 5
+The positions of cell 35 are Row 3, Column 8 and Box 5
+The positions of cell 36 are Row 4, Column 0 and Box 3
+The positions of cell 37 are Row 4, Column 1 and Box 3
+The positions of cell 38 are Row 4, Column 2 and Box 3
+The positions of cell 39 are Row 4, Column 3 and Box 4
+The positions of cell 40 are Row 4, Column 4 and Box 4
+The positions of cell 41 are Row 4, Column 5 and Box 4
+The positions of cell 42 are Row 4, Column 6 and Box 5
+The positions of cell 43 are Row 4, Column 7 and Box 5
+The positions of cell 44 are Row 4, Column 8 and Box 5
+The positions of cell 45 are Row 5, Column 0 and Box 3
+The positions of cell 46 are Row 5, Column 1 and Box 3
+The positions of cell 47 are Row 5, Column 2 and Box 3
+The positions of cell 48 are Row 5, Column 3 and Box 4
+The positions of cell 49 are Row 5, Column 4 and Box 4
+The positions of cell 50 are Row 5, Column 5 and Box 4
+The positions of cell 51 are Row 5, Column 6 and Box 5
+The positions of cell 52 are Row 5, Column 7 and Box 5
+The positions of cell 53 are Row 5, Column 8 and Box 5
+The positions of cell 54 are Row 6, Column 0 and Box 6
+The positions of cell 55 are Row 6, Column 1 and Box 6
+The positions of cell 56 are Row 6, Column 2 and Box 6
+The positions of cell 57 are Row 6, Column 3 and Box 7
+The positions of cell 58 are Row 6, Column 4 and Box 7
+The positions of cell 59 are Row 6, Column 5 and Box 7
+The positions of cell 60 are Row 6, Column 6 and Box 8
+The positions of cell 61 are Row 6, Column 7 and Box 8
+The positions of cell 62 are Row 6, Column 8 and Box 8
+The positions of cell 63 are Row 7, Column 0 and Box 6
+The positions of cell 64 are Row 7, Column 1 and Box 6
+The positions of cell 65 are Row 7, Column 2 and Box 6
+The positions of cell 66 are Row 7, Column 3 and Box 7
+The positions of cell 67 are Row 7, Column 4 and Box 7
+The positions of cell 68 are Row 7, Column 5 and Box 7
+The positions of cell 69 are Row 7, Column 6 and Box 8
+The positions of cell 70 are Row 7, Column 7 and Box 8
+The positions of cell 71 are Row 7, Column 8 and Box 8
+The positions of cell 72 are Row 8, Column 0 and Box 6
+The positions of cell 73 are Row 8, Column 1 and Box 6
+The positions of cell 74 are Row 8, Column 2 and Box 6
+The positions of cell 75 are Row 8, Column 3 and Box 7
+The positions of cell 76 are Row 8, Column 4 and Box 7
+The positions of cell 77 are Row 8, Column 5 and Box 7
+The positions of cell 78 are Row 8, Column 6 and Box 8
+The positions of cell 79 are Row 8, Column 7 and Box 8
+The positions of cell 80 are Row 8, Column 8 and Box 8
+5,null,null,null,null,null,null,null,null
+null,null,null,6,null,2,null,9,8
+null,null,null,null,8,9,null,null,4
+6,1,null,null,null,null,8,null,7
+null,null,4,null,null,null,5,null,null
+9,null,8,null,7,null,null,4,3
+8,null,null,4,3,null,null,null,null
+2,3,null,9,null,8,null,null,null
+null,null,null,null,null,null,null,8,null
+done

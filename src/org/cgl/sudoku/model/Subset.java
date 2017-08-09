@@ -23,7 +23,7 @@ public abstract class Subset {
 		return "My cells are " + cells[0].getId() + ", " + cells[1].getId() + ", " + cells[2].getId() + ", " + cells[3].getId() + ", " + cells[4].getId() + ", " + cells[5].getId() + ", " + cells[6].getId() + ", " + cells[7].getId() + ", " + cells[8].getId() + ", ";
 	}
 
-	public Boolean valueMustBe(int value, Cell cell) {
+	public boolean valueMustBe(int value, Cell cell) {
 		
 		Boolean valueCanBe;
 		
@@ -53,7 +53,10 @@ public abstract class Subset {
 		
 	}
 
-	public Boolean valueCanBe(int value, Cell cell) {
+	/*
+	 * Checks if the value is already in any of the cells of the subset. 
+	 */
+	public boolean valueCanBe(int value, Cell cell) {
 		
 		for (Cell c : cells) {
 			

@@ -15,7 +15,7 @@ public class Board {
 		cells = new Cell[81];
 		
 		for (int i = 0; i < 81; i++) {
-			cells[i] = new Cell(""+i);
+			cells[i] = new Cell(i);
 			//cells[i].setValue(i);
 		}
 		
@@ -30,24 +30,39 @@ public class Board {
 			logger.finest("Box " + (i+1) + " created");
 		}		
 		
-		// para comprobar que las posiciones son las correctas
+		// Checks if the positions are correct.
 		for (int i = 0; i < 81; i++){
 			logger.finest(cells[i].toString());
 		}
 		
 		for (int i = 0; i < 81; i++){		
 			cells[i].setValue(initialState[i]);
+			if (cells[i].getValue() != null) {
+				cells[i].getPossibleValues().clear();
+				cells[i].removePossibles(initialState[i]);
+			}
 		}
 		
 		System.out.println("The initial state is:");
-		// para comprobar que los valores se han asignado correctamente
+		// Checks if the values have been assigned correctly.
 		for (int i = 0; i < 81; i++) {
 			
 			if (i%9 != 8) {
-				System.out.print(cells[i].getValue() + ",");
+				
+				if (cells[i].getValue() != null) {
+					System.out.print(cells[i].getValue() + ",");
+				} else {
+					System.out.print(" ,");
+				}
+				
 			} else {
-				System.out.print(cells[i].getValue());
-				System.out.println();
+				
+				if (cells[i].getValue() != null) {
+					System.out.println(cells[i].getValue());
+				} else {
+					System.out.println(" ");
+				}
+				
 			}			
 		}
 		System.out.println();
@@ -80,9 +95,17 @@ public class Board {
 						Boolean valueMustBe = c.valueMustBe(j);
 						
 						if (valueMustBe) {
-							c.setValue(j);
-							cellHasChanged = true;
-							break;
+							Boolean checkValue = c.checkValue(j);
+							
+							if (checkValue) {
+								
+								c.setValue(j);
+								c.removePossibles(j);
+								cellHasChanged = true;
+								break;
+							} else {
+								
+							}
 						}						
 					}					
 				}				
@@ -101,4 +124,5 @@ public class Board {
 		}
 		return true;
 	}
+	
 }

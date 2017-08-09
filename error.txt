@@ -1,0 +1,2 @@
+jul 29, 2016 9:38:27 PM org.cgl.sudoku.ui.TerminalSudoku main
+INFORMACIÓN: This is an INFO message

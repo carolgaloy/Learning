@@ -1,14 +1,23 @@
 package org.cgl.sudoku.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Cell {
 
 	private Integer value;
-	private String id;
+	private int id;
 	private Subset[] containers;
+	private Set<Integer> possibleValues;
 	
-	public Cell(String id) {
+	public Cell(int id) {
 		containers = new Subset[3];
 		this.id = id;
+		possibleValues = new HashSet<Integer>();
+		
+		for (int i = 1; i < 10; i++) {
+			possibleValues.add(i);
+		}
 	}
 
 	public Integer getValue() {
@@ -46,12 +55,20 @@ public class Cell {
 	public String getBox() {
 		return containers[2].getId();
 	}
+	
+	public HashSet<Integer> getPossibleValues() {
+		return (HashSet<Integer>) possibleValues;
+	}
+
+	public void setPossibleValues(HashSet<Integer> possibleValues) {
+		this.possibleValues = possibleValues;
+	}
 		
 	public String toString(){
 		return "The positions of cell " + id + " are " + getRow() + ", " + getColumn() + " and " + getBox();		
 	}
 
-	public Boolean valueMustBe(int value) {
+	public boolean valueMustBe(int value) {
 		
 		Boolean valueMustBe;
 		
@@ -68,26 +85,59 @@ public class Cell {
 		return false;
 	}
 
-	public Boolean valueCanBe(int value, Subset subset) {
-		
+	public boolean valueCanBe(int value, Subset subset) {
+
 		Boolean valueCanBe;
-		
+
 		for (Subset s : containers) {
-			
+
 			if (s != subset) {
-				
+
 				valueCanBe = s.valueCanBe(value, this);
-				
+
 				if (!valueCanBe) {
 					return false;
 				}
 			}			
 		}
+
+		return true;
+	}
+
+	/* Checks if the value is correct by checking
+	 * each cell of each subset (row, column and box).
+	 * Returns true if the value is not in any sister cell.
+	 */
+	public boolean checkValue (int value) {
+		
+		for (Subset s : containers) {
+			
+			for (Cell c : s.cells) {
+				
+				if (c.getValue() != null) {
+					
+					if (c.getValue() == value) {						
+						return false;
+					}
+				}
+			}
+		}
 		
 		return true;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
+	}
+	
+	public void removePossibles (int value) {
+		
+		for (Subset s : containers) {
+			
+			for (Cell c : s.cells) {
+				
+				c.possibleValues.remove(value);
+			}			
+		}
 	}
 }

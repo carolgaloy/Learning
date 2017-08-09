@@ -3,8 +3,7 @@ package org.cgl.sudoku.ui;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Logger;
-
-import org.cgl.sudoku.model.*;
+import org.cgl.sudoku.model.Board;
 
 public class TerminalSudoku {
 	
@@ -46,15 +45,39 @@ public class TerminalSudoku {
 		for (int i = 0; i < 81; i++) {
 			
 			if (i%9 != 8) {
-				System.out.print(board.getCell(i).getValue()+ ",");
+				
+				if (board.getCell(i).getValue() != null) {
+					System.out.print(board.getCell(i).getValue()+ ",");
+				} else {
+					System.out.print(" ,");
+				}
+				
 			} else {
-				System.out.print(board.getCell(i).getValue() + "");
-				System.out.println();
-			}
-			
+				
+				if (board.getCell(i).getValue() != null) {
+					System.out.println(board.getCell(i).getValue() + "");
+				} else {
+					System.out.println(" ");
+				}				
+			}			
+		}
+		//System.out.println();
+
+		//System.out.println(board.getCell(0).getPossibleValues());
+		//System.out.println(board.getCell(1).getPossibleValues());
+		//System.out.println(board.getCell(2).getPossibleValues());
+		//System.out.println(board.getCell(3).getPossibleValues());
+		
+		/*
+		 * If the Sudoku is complete, write "Done", if not, write "Couldn't finish".
+		 */
+		System.out.println();
+		if (board.isComplete()) {
+			System.out.println("Done");
+		} else {
+			System.out.println("Couldn't finish");
 		}
 		
-		System.out.println("done");
 	}
 	
 	// Falta la validación de los valores
@@ -104,10 +127,4 @@ public class TerminalSudoku {
 			
 		return values;
 	}
-	
-	// metodo read initial state --> devuelve un vector
-	// se pasa a un solver del board --> que devuelve otro vector
-	// pasarlo al stdoutput
-	
-	// modificar el run configuration para que sepa de dónde tiene que leer
 }
