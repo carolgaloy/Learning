@@ -92,9 +92,13 @@ public class Cell {
 	 */
 	public boolean valueCanBe(int value, Subset subset) {
 
-		Boolean valueCanBe;
+		//Boolean valueCanBe;
 
-		for (Subset s : containers) {
+		if (this.possibleValues.contains(value)) {
+			return true;
+		}
+		
+		/*for (Subset s : containers) {
 
 			if (s != subset) {
 
@@ -104,8 +108,8 @@ public class Cell {
 					return false;
 				}
 			}			
-		}
-		return true;
+		}*/
+		return false;
 	}
 
 	/* Checks if the value is correct by checking

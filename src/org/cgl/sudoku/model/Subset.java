@@ -62,7 +62,7 @@ public abstract class Subset {
 	/*
 	 * Checks if the value is already in any of the cells of the subset. 
 	 */
-	public boolean valueCanBe(int value, Cell cell) {
+/*	public boolean valueCanBe(int value, Cell cell) {
 		
 		for (Cell c : cells) {
 			
@@ -76,7 +76,7 @@ public abstract class Subset {
 			}			
 		}		
 		return true;
-	}
+	}*/
 
 	/*
 	 * Returns the cells that have no value.
