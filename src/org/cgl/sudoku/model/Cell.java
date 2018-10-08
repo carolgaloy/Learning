@@ -68,6 +68,9 @@ public class Cell {
 		return "The positions of cell " + id + " are " + getRow() + ", " + getColumn() + " and " + getBox();		
 	}
 
+	/*
+	 * Checks if the cell must have the value. 
+	 */
 	public boolean valueMustBe(int value) {
 		
 		Boolean valueMustBe;
@@ -78,13 +81,15 @@ public class Cell {
 			
 			if (valueMustBe) {
 				return true;
-			}
-			
-		}
-		
+			}			
+		}		
 		return false;
 	}
 
+	/*
+	 * Checks if the value can be in the cell. If it can be in the cell,
+	 * then it is a possible value of the subset.
+	 */
 	public boolean valueCanBe(int value, Subset subset) {
 
 		Boolean valueCanBe;
@@ -100,7 +105,6 @@ public class Cell {
 				}
 			}			
 		}
-
 		return true;
 	}
 
@@ -121,8 +125,7 @@ public class Cell {
 					}
 				}
 			}
-		}
-		
+		}		
 		return true;
 	}
 
@@ -130,7 +133,7 @@ public class Cell {
 		return id;
 	}
 	
-	public void removePossibles (int value) {
+	public void removePossiblesFromSubsets (int value) {
 		
 		for (Subset s : containers) {
 			
@@ -139,5 +142,14 @@ public class Cell {
 				c.possibleValues.remove(value);
 			}			
 		}
+	}
+	
+	public Boolean comparePossibles(Cell cell) {
+		
+		if (this.possibleValues.equals(cell.possibleValues)) {
+			return true;
+		}
+		
+		return false;		
 	}
 }

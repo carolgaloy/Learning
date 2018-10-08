@@ -1,5 +1,7 @@
 package org.cgl.sudoku.model;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.cgl.sudoku.ui.TerminalSudoku;
@@ -39,7 +41,7 @@ public class Board {
 			cells[i].setValue(initialState[i]);
 			if (cells[i].getValue() != null) {
 				cells[i].getPossibleValues().clear();
-				cells[i].removePossibles(initialState[i]);
+				cells[i].removePossiblesFromSubsets(initialState[i]);
 			}
 		}
 		
@@ -81,43 +83,123 @@ public class Board {
 	public Integer[] solve() {
 		
 		Boolean cellHasChanged;
-		
+
 		do {
 			
 			cellHasChanged = false;
 			
-			for (Cell c : cells) {
+			for (Cell cell : cells) {
 				
-				if (c.getValue() == null) {
+				if (cell.getValue() == null) {
 					
-					for (int j = 1; j < 10; j++) {
-						
-						Boolean valueMustBe = c.valueMustBe(j);
+					if (cell.getPossibleValues().size() == 1) {
+						Integer value = cell.getPossibleValues().iterator().next();
+						cell.setValue(value);
+						cell.removePossiblesFromSubsets(value);
+						cell.getPossibleValues().clear();
+						cellHasChanged = true;
+					}
+					
+					for (Integer value : cell.getPossibleValues()) {						
+						Boolean valueMustBe = cell.valueMustBe(value);
 						
 						if (valueMustBe) {
-							Boolean checkValue = c.checkValue(j);
+							Boolean checkValue = cell.checkValue(value);
 							
 							if (checkValue) {
 								
-								c.setValue(j);
-								c.removePossibles(j);
+								cell.setValue(value);
+								cell.removePossiblesFromSubsets(value);
+								cell.getPossibleValues().clear();
 								cellHasChanged = true;
 								break;
-							} else {
 								
 							}
 						}						
 					}					
 				}				
-			}			
+			}
+			
+			reducePossibles();
+			//checkUniques();
+
 		} while (cellHasChanged == true);
-		
+
 		return null;
+	}
+	
+	/*
+	 * For each subset, check how many cells have with no value. If there are more than 2,
+	 * then check if there are two of them that contain exactly 2 equal values in their 
+	 * possible values. Then, remove this values from the possibles' other cells in the 
+	 * same subset.
+	 */
+	public void reducePossibles() {
+		
+		for (Subset subset : subsets) {
+			
+			Set<Cell> cellsWithNoValue = subset.cellsWithNoValue(); 
+			
+			if (cellsWithNoValue.size() > 2) {
+				
+				for (int i = 0; i < 8; i++) {
+					
+					if (subset.cells[i].getValue() == null) {
+						
+						for (int j = i+1; j < 9; j++) {
+							
+							Boolean possiblesAreEqual = false;
+							
+							if (subset.cells[i].getPossibleValues().size() == 2) {								
+								possiblesAreEqual = subset.cells[i].comparePossibles(subset.cells[j]);								
+							}
+							
+							if (possiblesAreEqual) {
+								
+								for (Cell cell : cellsWithNoValue) {
+									
+									if (cell != subset.cells[i] && cell != subset.cells[j]) {
+										
+										for (Integer value : subset.cells[i].getPossibleValues()) {
+											
+											cell.getPossibleValues().remove(value);
+										}										
+									}									
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public void checkUniques() {
+		for (Subset subset : subsets) {
+			for (Cell cell : subset.cells) {
+				if (cell.getValue() == null) {
+					Boolean isUnique = false;
+					for (Integer value : cell.getPossibleValues()) {
+						
+						for (Cell otherCell : subset.cells) {
+							if (otherCell != cell) {
+								isUnique = otherCell.getPossibleValues().contains(value);
+							}
+							if (isUnique) {
+								cell.setValue(value);
+								cell.getPossibleValues().clear();
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	public Boolean isComplete() {
 		
 		for (int i = 0; i < 81; i++) {
+			
 			if (cells[i].getValue() == null) {
 				return false;
 			}

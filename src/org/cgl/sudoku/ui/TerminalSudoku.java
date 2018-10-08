@@ -14,8 +14,6 @@ public class TerminalSudoku {
 		System.out.println("start");
 		// logger.info("This is an INFO message");
 		// logger.severe(() -> "This is a SEVERE message");
-		// TODO: Leer los datos de inizialización de un sudoku completo. Leer del stdin. Leer líneas del stdin.
-		// Crear un archivo sudoku1.txt, buscar un sudoku fácil y copiarlo. 
 		
 		TerminalSudoku terminalSudoku = new TerminalSudoku();
 		
@@ -61,33 +59,33 @@ public class TerminalSudoku {
 				}				
 			}			
 		}
-		//System.out.println();
-
-		//System.out.println(board.getCell(0).getPossibleValues());
-		//System.out.println(board.getCell(1).getPossibleValues());
-		//System.out.println(board.getCell(2).getPossibleValues());
-		//System.out.println(board.getCell(3).getPossibleValues());
 		
 		/*
-		 * If the Sudoku is complete, write "Done", if not, write "Couldn't finish".
+		 * If the Sudoku is complete, write "Done", if not, write "Couldn't finish"
+		 * and the possible values of the cells with no value.
 		 */
 		System.out.println();
 		if (board.isComplete()) {
 			System.out.println("Done");
 		} else {
 			System.out.println("Couldn't finish");
-		}
-		
+			System.out.println("Possible values for clear cells");
+			for (int i = 0; i < 81; i++) {
+				if (board.getCell(i).getValue() == null) {
+					Integer j = i + 1;
+					System.out.print("Cell " + j + ": ");
+					System.out.println(board.getCell(i).getPossibleValues());
+				}
+			}
+		}		
 	}
 	
-	// Falta la validación de los valores
+	// TODO: Falta la validación de los valores
 	private Integer[] readInitialState() {
 		
 		Integer[] values = new Integer[81];
 		Integer position = 0;
 		Scanner in = new Scanner(System.in);
-		
-		System.out.println("The file contains:");
 
 		try {
 			
@@ -114,11 +112,8 @@ public class TerminalSudoku {
 					}
 					position++;
 				}
-				
-				System.out.println(strLine);				
+							
 			}
-			
-			System.out.println();
 			
 		} finally {
 			
